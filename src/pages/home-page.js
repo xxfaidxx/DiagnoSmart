@@ -35,9 +35,6 @@ class HomePage extends HTMLElement {
   
     render() {
       this.innerHTML = `
-
-          
-          <!-- Mobile Menu -->
           <div class="mobile-menu hidden md:hidden bg-white w-full px-4 py-2 shadow-lg">
             <a href="#" class="block py-3 px-4 text-gray-800 hover:bg-blue-50 rounded">Home</a>
             <a href="#" class="block py-3 px-4 text-gray-800 hover:bg-blue-50 rounded">Layanan</a>
@@ -45,8 +42,7 @@ class HomePage extends HTMLElement {
             <a href="#" class="block py-3 px-4 text-gray-800 hover:bg-blue-50 rounded">Kontak</a>
           </div>
         </nav>
-  
-        <!-- Hero Section -->
+
         <section class="bg-gradient-to-r from-blue-500 to-blue-700 text-white py-8 md:py-12">
           <div class="container mx-auto px-4 text-center">
             <div class="max-w-4xl mx-auto p-1 bg-white rounded-xl shadow-2xl">
@@ -59,7 +55,6 @@ class HomePage extends HTMLElement {
           </div>
         </section>
   
-        <!-- Categories Section -->
         <section class="py-12">
           <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -73,7 +68,6 @@ class HomePage extends HTMLElement {
                 </div>
               </div>
   
-              <!-- Category 2 -->
               <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
                 <div class="h-48 flex items-center justify-center">
                   <img src="./images/Penyakit%20tulang.png" alt="Penyakit Tulang" class="h-full w-full object-cover">
@@ -83,7 +77,6 @@ class HomePage extends HTMLElement {
                 </div>
               </div>
   
-              <!-- Category 3 -->
               <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
                 <div class="h-48 flex items-center justify-center">
                   <img src="./images/Penyakit%20kulit.png" alt="Penyakit Kulit" class="h-full w-full object-cover">
@@ -93,7 +86,6 @@ class HomePage extends HTMLElement {
                 </div>
               </div>
   
-              <!-- Category 4 -->
               <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
                 <div class="h-48 flex items-center justify-center">
                   <img src="./images/Penyakit%20pencernaan.png" alt="Penyakit Pencernaan" class="h-full w-full object-cover">
