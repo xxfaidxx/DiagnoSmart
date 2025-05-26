@@ -1,2 +1,3 @@
-import "../input.css"
-import "../components/footer-bar.js"
+import "../input.css";
+import "../components/footer-bar.js";
+import "../components/homepage.js";
