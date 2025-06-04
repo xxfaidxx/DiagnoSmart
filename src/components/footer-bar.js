@@ -72,8 +72,7 @@ class FooterBar extends HTMLElement {
 
     this._shadowRoot.innerHTML += `
       <div class="footer">
-        Diagnosmart &copy; 2025<br/>
-        <small>Aplikasi web untuk mendeteksi penyakit berdasarkan input pengguna secara cepat dan akurat.</small>
+        DiagnoSmart &copy; 2025<br/>
       </div>
     `;
   }
