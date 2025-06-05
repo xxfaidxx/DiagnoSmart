@@ -20,7 +20,7 @@ export default function BoneForm() {
   const resultDiv = content.querySelector("#result");
 
   form.addEventListener("submit", async (event) => {
-    event.preventDefault();
+    event.preventDefault(); // Prevent the form from refreshing the page
 
     const symptomInput = content.querySelector("#symptom-input");
     const symptoms = symptomInput.value.trim();
@@ -31,37 +31,30 @@ export default function BoneForm() {
       return;
     }
 
+    // Split input symptoms into an array
     const symptomsArray = symptoms.split(",").map((item) => item.trim());
 
     try {
-      const response = await fetch(
-        "https://project-production-fa51.up.railway.app/predict",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            symptoms: symptomsArray,
-            model_type: "bone",
-          }),
-          mode: "no-cors",
-        }
-      );
-
-      console.log("Response status:", response.status);
-      const responseText = await response.text();
-      console.log("Response text:", responseText);
+      // Send symptoms and model_type to the proxy server for prediction
+      const response = await fetch("http://localhost:3000/predict", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          symptoms: symptomsArray, // Send symptoms as an array
+          model_type: "skin", // Specify the model type
+        }),
+      });
 
       if (!response.ok) {
         throw new Error("Failed to fetch prediction.");
       }
 
-      const data = JSON.parse(responseText);
+      const data = await response.json();
       resultDiv.innerHTML = `<p class="text-green-600">Prediction: ${data.prediction}</p>`;
     } catch (error) {
       resultDiv.innerHTML = `<p class="text-red-500">${error.message}</p>`;
-      console.error("Error:", error);
     }
   });
 
