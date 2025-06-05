@@ -1,13 +1,15 @@
 import HomePage from "../pages/home-page.js";
 import renderFeedbackPage from "../pages/feed-back/feedback-page.js";
 import ContactPage from "../pages/contact.js";
+import BoneForm from "../pages/form/bone-form.js";
 
 class Router {
   constructor() {
     this.routes = {
-      "/": () => new HomePage(),
+      "/": () => new HomePage().render(),
       "/feedback": renderFeedbackPage,
       "/contact": () => ContactPage.render(),
+      "/bone-form": () => BoneForm(),
     };
     this.currentRoute = "/";
     this.setupRouting();

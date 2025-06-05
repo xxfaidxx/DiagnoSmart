@@ -1,5 +1,5 @@
-import createFeedbackForm from "./createfeedbackform";
-import createTestimonialCard from "./testi";
+import createFeedbackForm from "./createfeedbackform.js";
+import createTestimonialCard from "./testi.js";
 
 async function renderFeedbackPage() {
   const wrapper = document.createElement("div");

@@ -1,44 +1,17 @@
-class HomePage extends HTMLElement {
+export default class HomePage {
   constructor() {
-    super();
     this._isMobileMenuOpen = false;
   }
 
-  connectedCallback() {
-    this.render();
-    this.setupMobileMenu();
-  }
-
-  toggleMobileMenu() {
-    this._isMobileMenuOpen = !this._isMobileMenuOpen;
-    const mobileMenu = this.querySelector(".mobile-menu");
-    const hamburgerIcon = this.querySelector(".hamburger-icon");
-    const closeIcon = this.querySelector(".close-icon");
-
-    if (this._isMobileMenuOpen) {
-      mobileMenu.classList.remove("hidden");
-      hamburgerIcon.classList.add("hidden");
-      closeIcon.classList.remove("hidden");
-    } else {
-      mobileMenu.classList.add("hidden");
-      hamburgerIcon.classList.remove("hidden");
-      closeIcon.classList.add("hidden");
-    }
-  }
-
-  setupMobileMenu() {
-    const menuButton = this.querySelector(".mobile-menu-button");
-    if (menuButton) {
-      menuButton.addEventListener("click", () => this.toggleMobileMenu());
-    }
-  }
-
+  // Render the content of the homepage
   render() {
-    this.innerHTML = `
+    const content = document.createElement("div");
+
+    content.innerHTML = `
       <div class="mobile-menu hidden md:hidden bg-white w-full px-4 py-2 shadow-lg">
-        <a href="/" class="block py-3 px-4 text-gray-800 hover:bg-blue-50 rounded">Home</a>
-        <a href="/feedback" class="block py-3 px-4 text-gray-800 hover:bg-blue-50 rounded">Feedback</a>
-        <a href="/contact" class="block py-3 px-4 text-gray-800 hover:bg-blue-50 rounded">Contact</a>
+        <a href="#/" class="block py-3 px-4 text-gray-800 hover:bg-blue-50 rounded">Home</a>
+        <a href="#/feedback" class="block py-3 px-4 text-gray-800 hover:bg-blue-50 rounded">Feedback</a>
+        <a href="#/contact" class="block py-3 px-4 text-gray-800 hover:bg-blue-50 rounded">Contact</a>
       </div>
 
       <section class="bg-gradient-to-r from-blue-500 to-blue-700 text-white py-8 md:py-12">
@@ -57,16 +30,7 @@ class HomePage extends HTMLElement {
         <div class="container mx-auto px-4">
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <!-- Category 1 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-              <div class="h-48 flex items-center justify-center">
-                <img src="./images/Penyakit%20umum.png" alt="Penyakit Umum" class="h-full w-full object-cover">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-semibold text-gray-800">Penyakit Umum</h3>
-              </div>
-            </div>
-
-            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow penyakit-tulang-card cursor-pointer">
               <div class="h-48 flex items-center justify-center">
                 <img src="./images/Penyakit%20tulang.png" alt="Penyakit Tulang" class="h-full w-full object-cover">
               </div>
@@ -76,6 +40,15 @@ class HomePage extends HTMLElement {
             </div>
 
             <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+              <div class="h-48 flex items-center justify-center">
+                <img src="./images/Penyakit%20umum.png" alt="Penyakit Umum" class="h-full w-full object-cover">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-semibold text-gray-800">Penyakit Umum</h3>
+              </div>
+            </div>
+
+                        <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
               <div class="h-48 flex items-center justify-center">
                 <img src="./images/Penyakit%20kulit.png" alt="Penyakit Kulit" class="h-full w-full object-cover">
               </div>
@@ -96,8 +69,14 @@ class HomePage extends HTMLElement {
         </div>
       </section>
     `;
+
+    const penyakitTulangCard = content.querySelector(".penyakit-tulang-card");
+    if (penyakitTulangCard) {
+      penyakitTulangCard.addEventListener("click", () => {
+        window.location.hash = "/bone-form";
+      });
+    }
+
+    return content;
   }
 }
-
-customElements.define("home-page", HomePage);
-export default HomePage;
