@@ -1,5 +1,6 @@
 import "../input.css";
 import "../components/footer-bar.js";
+import "../components/navbar.js";
 import "../pages/feed-back/supa-feedback.js";
 import Router from "../routes/routes.js";
 
