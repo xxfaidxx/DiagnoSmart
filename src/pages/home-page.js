@@ -3,7 +3,6 @@ export default class HomePage {
     this._isMobileMenuOpen = false;
   }
 
-  // Render the content of the homepage
   render() {
     const content = document.createElement("div");
 

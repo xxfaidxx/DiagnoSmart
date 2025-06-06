@@ -20,39 +20,11 @@ class FooterBar extends HTMLElement {
       .footer {
         padding: 24px 20px;
         text-align: center;
-        color: #FF6500;
+        color: #black;
         font-weight: bold;
-        font-size: 14px;
+        font-size: 20px;
       }
 
-      small {
-        display: block;
-        margin-top: 8px;
-        font-weight: normal;
-        color: #555;
-        font-size: 12px;
-      }
-
-      .nav-buttons {
-        margin-top: 12px;
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-      }
-
-      button {
-        background-color: #FF6500;
-        border: none;
-        color: white;
-        padding: 8px 16px;
-        cursor: pointer;
-        font-size: 12px;
-        border-radius: 4px;
-      }
-
-      button:hover {
-        background-color: #e05500;
-      }
     `;
   }
 
@@ -72,7 +44,7 @@ class FooterBar extends HTMLElement {
 
     this._shadowRoot.innerHTML += `
       <div class="footer">
-        DiagnoSmart &copy; 2025<br/>
+        &copy; DiagnoSmart<br/>
       </div>
     `;
   }
