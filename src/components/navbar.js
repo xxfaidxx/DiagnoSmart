@@ -14,14 +14,18 @@ class NavBar extends HTMLElement {
         }
 
         nav img {
-          height: 50px;
+          height: 45px;
+          margin-left: 1rem;
+          margin-top : 0.7rem;
         }
 
         ul {
           display: flex;
-          gap: 1rem;
+          gap: 1.25rem;
           padding: 0;
           list-style-type: none; 
+          margin-right : 1rem;
+          font-size: 20px;
         }
 
         ul li a {
@@ -31,12 +35,12 @@ class NavBar extends HTMLElement {
         }
 
         ul li a:hover {
-          color: #10b981;
+          color: #000000;
         }
       </style>
-      <nav>
-        <img src="./images/icon.png" alt="DiagnoSmart Icon" />
-        <ul>
+      <nav><a href="#/">
+        <img src="./images/icon.png" alt="DiagnoSmart Icon" /></a>
+        <ul class="">
           <li><a href="#/">Home</a></li>
           <li><a href="#/feedback">Feedback</a></li>
           <li><a href="#/contact">Contact</a></li>
