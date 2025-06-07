@@ -1,44 +1,51 @@
-export default function BoneForm() {
+export default function SkinForm() {
   const content = document.createElement("div");
   content.innerHTML = `
     <section class="w-full md:w-3/4 mx-auto bg-white p-6 rounded-lg shadow-md mt-4">
-      <h2 class="text-2xl font-bold mb-4">Prediksi Penyakit Tulang</h2>
-      <p class="text-gray-700 mb-3">Pilih gejala untuk mendapat prediksi penyakit tulang :</p>
+      <h2 class="text-2xl font-bold mb-4">Prediksi Penyakit Kulit</h2>
+      <p class="text-gray-700 mb-4">Pilih gejala untuk mendapat prediksi penyakit kulit</p>
 
-      <form id="bone-form" class="relative">
-
+      <form id="skin-form" class="relative">
         <div id="selected-symptoms" class="mb-2 flex flex-wrap gap-2"></div>
 
         <div class="relative mb-4">
           <input id="symptom-input" class="p-2 border rounded-md w-full" type="text" placeholder="Masukkan Gejala" autocomplete="off" />
         </div>
 
-      <button type="submit" class="text-white py-2 px-4 rounded-md" style="background-color: #076ba1;">Prediksi</button>
+        <button type="submit" class="text-white py-2 px-4 rounded-md" style="background-color: #076ba1;">Prediksi</button>
       </form>
 
       <div id="result" class="mt-4"></div>
     </section>
   `;
 
-  const form = content.querySelector("#bone-form");
+  const form = content.querySelector("#skin-form");
   const resultDiv = content.querySelector("#result");
   const symptomInput = content.querySelector("#symptom-input");
   const selectedSymptomsDiv = content.querySelector("#selected-symptoms");
 
   const symptomsList = {
-    "Nyeri punggung": "back_pain",
-    Pusing: "dizziness",
-    "Nyeri sendi panggul": "hip_joint_pain",
+    Lepuhan: "blister",
+    "Bercak diskromik": "dischromic _patches",
+    Kelelahan: "fatigue",
+    "Sakit kepala": "headache",
+    "Demam tinggi": "high_fever",
+    "Radang pada kuku": "inflammatory_nails",
+    Gatal: "itching",
     "Nyeri sendi": "joint_pain",
-    "Nyeri lutut": "knee_pain",
-    "Kehilangan keseimbangan": "loss_of_balance",
-    "Gerakan kaku": "movement_stiffness",
-    "Otot lemas": "muscle_weakness",
-    "Nyeri leher": "neck_pain",
-    "Nyeri saat berjalan": "painful_walking",
-    "Leher kaku": "stiff_neck",
-    "Pembengkakan sendi": "swelling_joints",
-    "Lemah pada tangan atau kaki": "weakness_in_limbs",
+    Lesu: "lethargy",
+    "Kehilangan nafsu makan": "loss_of_appetite",
+    "Tidak enak badan": "malaise",
+    "Demam ringan": "mild_fever",
+    "Erupsi kulit pada kelenjar getah bening": "nodal_skin_eruptions",
+    "Luka merah di sekitar hidung": "red_sore_around_nose",
+    "Bintik merah di tubuh": "red_spots_over_body",
+    "Kulit berubah menjadi biru atau biru-abu-abu": "silver_like_dusting",
+    "Kulit mengelupas": "skin_peeling",
+    "Ruam kulit": "skin_rash",
+    "Lekukan kecil di kuku": "small_dents_in_nails",
+    "Pembengkakan kelenjar getah bening": "swelled_lymph_nodes",
+    "Kerak kuning bernanah": "yellow_crust_ooze",
   };
 
   let selectedSymptoms = [];
@@ -133,7 +140,7 @@ export default function BoneForm() {
       ) {
         dropdown.remove();
       }
-    }, 100000);
+    }, 10000);
   });
 
   form.addEventListener("submit", async (event) => {
@@ -153,7 +160,7 @@ export default function BoneForm() {
         },
         body: JSON.stringify({
           symptoms: selectedSymptoms,
-          model_type: "bone",
+          model_type: "skin",
         }),
       });
 
@@ -180,18 +187,19 @@ export default function BoneForm() {
                  </ul>`
               : ""
           }
-      <div class="mt-4 p-3 bg-white border border-gray-200 rounded-md shadow-sm text-center">
-        <p class="text-gray-800 mb-4">
-          Kami harap informasi ini membantu Anda. Jika berkenan, silakan berikan penilaian atau masukan Anda!
-        </p>
-        <div class="flex justify-center">
-          <a href="#/feedback"
-            class="text-white px-4 py-2 rounded-md transition hover:opacity-90"
-            style="background-color: #076ba1;">
-            Berikan Rating & Masukan
-          </a>
+          <div class="mt-4 p-3 bg-white border border-gray-200 rounded-md shadow-sm text-center">
+            <p class="text-gray-800 mb-4">
+              Kami harap informasi ini membantu Anda. Jika berkenan, silakan berikan penilaian atau masukan Anda!
+            </p>
+            <div class="flex justify-center">
+              <a href="#/feedback"
+                class="text-white px-4 py-2 rounded-md transition hover:opacity-90"
+                style="background-color: #076ba1;">
+                Berikan Rating & Masukan
+              </a>
+            </div>
+          </div>
         </div>
-      </div>
       `;
     } catch (error) {
       resultDiv.innerHTML = `<p class="text-red-500">${error.message}</p>`;

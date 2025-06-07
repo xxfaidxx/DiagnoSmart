@@ -1,44 +1,92 @@
-export default function BoneForm() {
+export default function GeneralDisease() {
   const content = document.createElement("div");
   content.innerHTML = `
     <section class="w-full md:w-3/4 mx-auto bg-white p-6 rounded-lg shadow-md mt-4">
-      <h2 class="text-2xl font-bold mb-4">Prediksi Penyakit Tulang</h2>
-      <p class="text-gray-700 mb-3">Pilih gejala untuk mendapat prediksi penyakit tulang :</p>
+      <h2 class="text-2xl font-bold mb-4">Prediksi Penyakit Umum</h2>
+      <p class="text-gray-700 mb-4">Pilih gejala untuk mendapat prediksi penyakit.</p>
 
-      <form id="bone-form" class="relative">
-
+      <form id="common-form" class="relative">
         <div id="selected-symptoms" class="mb-2 flex flex-wrap gap-2"></div>
 
         <div class="relative mb-4">
           <input id="symptom-input" class="p-2 border rounded-md w-full" type="text" placeholder="Masukkan Gejala" autocomplete="off" />
         </div>
 
-      <button type="submit" class="text-white py-2 px-4 rounded-md" style="background-color: #076ba1;">Prediksi</button>
+        <button type="submit" class="text-white py-2 px-4 rounded-md" style="background-color: #076ba1;">Prediksi</button>
       </form>
 
       <div id="result" class="mt-4"></div>
     </section>
   `;
 
-  const form = content.querySelector("#bone-form");
+  const form = content.querySelector("#common-form");
   const resultDiv = content.querySelector("#result");
   const symptomInput = content.querySelector("#symptom-input");
   const selectedSymptomsDiv = content.querySelector("#selected-symptoms");
 
   const symptomsList = {
-    "Nyeri punggung": "back_pain",
-    Pusing: "dizziness",
-    "Nyeri sendi panggul": "hip_joint_pain",
+    "Nyeri perut": "abdominal_pain",
+    "Asam lambung": "acidity",
+    "Gangguan kesadaran": "altered_sensorium",
+    "Sakit punggung": "back_pain",
+    "Nyeri perut bagian bawah": "belly_pain",
+    "Ketidaknyamanan kandung kemih": "bladder_discomfort",
+    "Darah dalam dahak": "blood_in_sputum",
+    "Penglihatan kabur dan berubah": "blurred_and_distorted_vision",
+    "Sulit bernafas": "breathlessness",
+    Memar: "bruising",
+    "Nyeri saat buang air kecil": "burning_micturition",
+    "Nyeri dada": "chest_pain",
+    Menggigil: "chills",
+    "Hidung tersumbat": "congestion",
+    "Susah buang air besar": "constipation",
+    "Sering ingin buang air kecil": "continuous_feel_of_urine",
+    "Bersin terus menerus": "continuous_sneezing",
+    Batuk: "cough",
+    "Kram otot": "cramps",
+    "Rasa sedih": "depression",
+    Diare: "diarrhoea",
+    "Lapar berlebihan": "excessive_hunger",
+    "Riwayat penyakit keluarga": "family_history",
+    "Detak jantung cepat": "fast_heart_rate",
+    "Rasa lelah": "fatigue",
+    "Bau urin yang tidak sedap": "foul_smell_of urine",
+    "Sakit kepala": "headache",
+    "Demam tinggi": "high_fever",
+    "Gangguan pencernaan": "indigestion",
+    "Mudah marah": "irritability",
     "Nyeri sendi": "joint_pain",
-    "Nyeri lutut": "knee_pain",
-    "Kehilangan keseimbangan": "loss_of_balance",
-    "Gerakan kaku": "movement_stiffness",
-    "Otot lemas": "muscle_weakness",
-    "Nyeri leher": "neck_pain",
-    "Nyeri saat berjalan": "painful_walking",
-    "Leher kaku": "stiff_neck",
-    "Pembengkakan sendi": "swelling_joints",
-    "Lemah pada tangan atau kaki": "weakness_in_limbs",
+    "Kehilangan nafsu makan": "loss_of_appetite",
+    "Hilang penciuman": "loss_of_smell",
+    "Tidak enak badan": "malaise",
+    "Demam ringan": "mild_fever",
+    "Dahak lendir": "mucoid_sputum",
+    "Nyeri otot": "muscle_pain",
+    Mual: "nausea",
+    "Kelebihan berat badan": "obesity",
+    "Sakit di belakang mata": "pain_behind_the_eyes",
+    Berdahak: "phlegm",
+    "Pembuluh darah betis menonjol": "prominent_veins_on_calf",
+    "Bintik merah di tubuh": "red_spots_over_body",
+    "Mata merah": "redness_of_eyes",
+    "Hidung meler": "runny_nose",
+    "Dahak berwarna coklat kemerahan": "rusty_sputum",
+    "Menggigil hebat": "shivering",
+    "Tekanan pada sinus": "sinus_pressure",
+    "Ruam kulit": "skin_rash",
+    "Leher terasa kaku": "stiff_neck",
+    "Keringat berlebihan": "sweating",
+    "Pembengkakan kelenjar getah bening": "swelled_lymph_nodes",
+    "Pembuluh darah bengkak": "swollen_blood_vessels",
+    "Kaki membengkak": "swollen_legs",
+    "Iritasi pada tenggorokan": "throat_irritation",
+    "Tanda toksik (typhos)": "toxic_look_(typhos)",
+    "Penglihatan terganggu": "visual_disturbances",
+    Muntah: "vomiting",
+    "Mata berair": "watering_from_eyes",
+    "Kelemahan satu sisi tubuh": "weakness_of_one_body_side",
+    "Penurunan berat badan": "weight_loss",
+    "Mata menguning": "yellowing_of_eyes",
   };
 
   let selectedSymptoms = [];
@@ -133,7 +181,7 @@ export default function BoneForm() {
       ) {
         dropdown.remove();
       }
-    }, 100000);
+    }, 10000);
   });
 
   form.addEventListener("submit", async (event) => {
@@ -153,7 +201,7 @@ export default function BoneForm() {
         },
         body: JSON.stringify({
           symptoms: selectedSymptoms,
-          model_type: "bone",
+          model_type: "general",
         }),
       });
 
@@ -180,18 +228,20 @@ export default function BoneForm() {
                  </ul>`
               : ""
           }
-      <div class="mt-4 p-3 bg-white border border-gray-200 rounded-md shadow-sm text-center">
-        <p class="text-gray-800 mb-4">
-          Kami harap informasi ini membantu Anda. Jika berkenan, silakan berikan penilaian atau masukan Anda!
-        </p>
-        <div class="flex justify-center">
-          <a href="#/feedback"
-            class="text-white px-4 py-2 rounded-md transition hover:opacity-90"
-            style="background-color: #076ba1;">
-            Berikan Rating & Masukan
-          </a>
+
+        <div class="mt-4 p-3 bg-white border border-gray-200 rounded-md shadow-sm text-center">
+          <p class="text-gray-800 mb-4">
+            Kami harap informasi ini membantu Anda. Jika berkenan, silakan berikan penilaian atau masukan Anda!
+          </p>
+          <div class="flex justify-center">
+            <a href="#/feedback"
+              class="text-white px-4 py-2 rounded-md transition hover:opacity-90"
+              style="background-color: #076ba1;">
+              Berikan Rating & Masukan
+            </a>
+          </div>
         </div>
-      </div>
+        </div>
       `;
     } catch (error) {
       resultDiv.innerHTML = `<p class="text-red-500">${error.message}</p>`;

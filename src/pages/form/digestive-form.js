@@ -1,12 +1,11 @@
-export default function BoneForm() {
+export default function DigestiveForm() {
   const content = document.createElement("div");
   content.innerHTML = `
     <section class="w-full md:w-3/4 mx-auto bg-white p-6 rounded-lg shadow-md mt-4">
-      <h2 class="text-2xl font-bold mb-4">Prediksi Penyakit Tulang</h2>
-      <p class="text-gray-700 mb-3">Pilih gejala untuk mendapat prediksi penyakit tulang :</p>
+      <h2 class="text-2xl font-bold mb-4">Prediksi Penyakit Pencernaan</h2>
+      <p class="text-gray-700 mb-3">Pilih gejala untuk mendapat prediksi penyakit pencernaan</p>
 
-      <form id="bone-form" class="relative">
-
+      <form id="digestive-form" class="relative">
         <div id="selected-symptoms" class="mb-2 flex flex-wrap gap-2"></div>
 
         <div class="relative mb-4">
@@ -20,25 +19,26 @@ export default function BoneForm() {
     </section>
   `;
 
-  const form = content.querySelector("#bone-form");
+  const form = content.querySelector("#digestive-form");
   const resultDiv = content.querySelector("#result");
   const symptomInput = content.querySelector("#symptom-input");
   const selectedSymptomsDiv = content.querySelector("#selected-symptoms");
 
   const symptomsList = {
-    "Nyeri punggung": "back_pain",
-    Pusing: "dizziness",
-    "Nyeri sendi panggul": "hip_joint_pain",
-    "Nyeri sendi": "joint_pain",
-    "Nyeri lutut": "knee_pain",
-    "Kehilangan keseimbangan": "loss_of_balance",
-    "Gerakan kaku": "movement_stiffness",
-    "Otot lemas": "muscle_weakness",
-    "Nyeri leher": "neck_pain",
-    "Nyeri saat berjalan": "painful_walking",
-    "Leher kaku": "stiff_neck",
-    "Pembengkakan sendi": "swelling_joints",
-    "Lemah pada tangan atau kaki": "weakness_in_limbs",
+    "Nyeri perut": "abdominal_pain",
+    "Asam lambung": "acidity",
+    "Nyeri dada": "chest_pain",
+    Batuk: "cough",
+    Dehidrasi: "dehydration",
+    Diare: "diarrhoea",
+    "Gangguan pencernaan": "indigestion",
+    "Gatal dalam tubuh": "internal_itching",
+    "Hilang nafsu makan": "loss_of_appetite",
+    "Kentut berlebihan": "passage_of_gases",
+    "Sakit perut": "stomach_pain",
+    "Mata cekung": "sunken_eyes",
+    "Luka di lidah": "ulcers_on_tongue",
+    Muntah: "vomiting",
   };
 
   let selectedSymptoms = [];
@@ -133,7 +133,7 @@ export default function BoneForm() {
       ) {
         dropdown.remove();
       }
-    }, 100000);
+    }, 10000);
   });
 
   form.addEventListener("submit", async (event) => {
@@ -153,7 +153,7 @@ export default function BoneForm() {
         },
         body: JSON.stringify({
           symptoms: selectedSymptoms,
-          model_type: "bone",
+          model_type: "general",
         }),
       });
 
@@ -192,6 +192,7 @@ export default function BoneForm() {
           </a>
         </div>
       </div>
+
       `;
     } catch (error) {
       resultDiv.innerHTML = `<p class="text-red-500">${error.message}</p>`;
