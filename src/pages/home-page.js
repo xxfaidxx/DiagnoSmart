@@ -13,55 +13,53 @@ export default class HomePage {
         <a href="#/contact" class="block py-3 px-4 text-gray-800 hover:bg-blue-50 rounded">Contact</a>
       </div>
 
-      <section class="bg-gradient-to-r from-blue-500 to-blue-700 text-white py-8 md:py-12">
-        <div class="container mx-auto px-4 text-center">
-          <div class="max-w-4xl mx-auto p-1 bg-white rounded-xl shadow-2xl">
-            <img 
-              src="./images/Banner.png" 
-              alt="AI DIAGNOSIS CERDAS UNTUK MASA DEPAN KESEHATAN ANDA"
-              class="w-full h-auto object-contain rounded-lg border-4 border-white shadow-inner"
-            >
-          </div>
-        </div>
-      </section>
+      <div class="w-full px-2 md:px-5 mt-3 text-center">
+        <img 
+          src="./images/Banner.png"   
+          alt="Banner"
+          class="w-full h-auto object-cover rounded-xl border-4 shadow-2xl mb-20"
+        >
+      </div>
 
+
+    <h2 class="text-2xl font-medium text-center">Layanan Yang Tersedia</h2>
       <section class="py-12">
-        <div class="container mx-auto px-4">
+        <div class="container mx-auto mb-4 px-4">
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <!-- Category 1 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow penyakit-tulang-card cursor-pointer">
               <div class="h-48 flex items-center justify-center">
-                <img src="./images/Penyakit%20tulang.png" alt="Penyakit Tulang" class="h-full w-full object-cover">
+                <img src="./images/Tulang.png" alt="Penyakit Tulang" class="h-full w-full object-cover">
               </div>
               <div class="p-6">
-                <h3 class="text-xl font-semibold text-gray-800">Penyakit Tulang</h3>
+                <h3 class="text-xl font-semibold text-gray-800 text-center">Penyakit Tulang</h3>
               </div>
             </div>
 
-            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow penyakit-umum-card cursor-pointer">
               <div class="h-48 flex items-center justify-center">
-                <img src="./images/Penyakit%20umum.png" alt="Penyakit Umum" class="h-full w-full object-cover">
+                <img src="./images/Umum.png" alt="Penyakit Umum" class="h-full w-full object-cover">
               </div>
               <div class="p-6">
-                <h3 class="text-xl font-semibold text-gray-800">Penyakit Umum</h3>
+                <h3 class="text-xl font-semibold text-gray-800 text-center">Penyakit Umum</h3>
               </div>
             </div>
 
-                        <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow penyakit-pencernaan-card cursor-pointer">
               <div class="h-48 flex items-center justify-center">
-                <img src="./images/Penyakit%20kulit.png" alt="Penyakit Kulit" class="h-full w-full object-cover">
+                <img src="./images/Pencernaan.png" alt="Penyakit Pencernaan" class="h-full w-full object-cover">
               </div>
               <div class="p-6">
-                <h3 class="text-xl font-semibold text-gray-800">Penyakit Kulit</h3>
+                <h3 class="text-xl font-semibold text-gray-800 text-center">Penyakit Pencernaan</h3>
               </div>
             </div>
 
-            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow penyakit-kulit-card cursor-pointer">
               <div class="h-48 flex items-center justify-center">
-                <img src="./images/Penyakit%20pencernaan.png" alt="Penyakit Pencernaan" class="h-full w-full object-cover">
+                <img src="./images/Kulit.png" alt="Penyakit Kulit" class="h-full w-full object-cover">
               </div>
               <div class="p-6">
-                <h3 class="text-xl font-semibold text-gray-800">Penyakit Pencernaan</h3>
+                <h3 class="text-xl font-semibold text-gray-800 text-center">Penyakit Kulit</h3>
               </div>
             </div>
           </div>
@@ -73,6 +71,29 @@ export default class HomePage {
     if (penyakitTulangCard) {
       penyakitTulangCard.addEventListener("click", () => {
         window.location.hash = "/bone-form";
+      });
+    }
+
+    const penyakitUmumCard = content.querySelector(".penyakit-umum-card");
+    if (penyakitUmumCard) {
+      penyakitUmumCard.addEventListener("click", () => {
+        window.location.hash = "/general-form";
+      });
+    }
+
+    const penyakitPencernaanCard = content.querySelector(
+      ".penyakit-pencernaan-card"
+    );
+    if (penyakitPencernaanCard) {
+      penyakitPencernaanCard.addEventListener("click", () => {
+        window.location.hash = "/digestive-form";
+      });
+    }
+
+    const penyakitKulitCard = content.querySelector(".penyakit-kulit-card");
+    if (penyakitKulitCard) {
+      penyakitKulitCard.addEventListener("click", () => {
+        window.location.hash = "/skin-form";
       });
     }
 
