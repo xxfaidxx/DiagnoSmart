@@ -1,6 +1,6 @@
 import { getFeedbacks, submitFeedback } from "/src/supa.js";
-import createFeedbackForm from "./createFeedbackForm";
-import createTestimonialCard from "./testi";
+import createFeedbackForm from "./createfeedbackform.js";
+import createTestimonialCard from "./testi.js";
 
 export default async function renderFeedbackPage() {
   const wrapper = document.createElement("div");
