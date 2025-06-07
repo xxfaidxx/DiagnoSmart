@@ -1,9 +1,14 @@
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const CopyWebpackPlugin = require("copy-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+import path from "path";
+import { fileURLToPath } from "url";
 
-module.exports = {
+// Get the current directory path using import.meta.url
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+import HtmlWebpackPlugin from "html-webpack-plugin";
+import CopyWebpackPlugin from "copy-webpack-plugin";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
+
+export const common = {
   entry: {
     app: path.resolve(__dirname, "src/scripts/index.js"),
   },

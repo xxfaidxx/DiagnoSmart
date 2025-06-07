@@ -1,34 +1,35 @@
-const path = require("path");
-const { merge } = require("webpack-merge");
-const common = require("./webpack.common.js");
+// webpack.prod.js
+import path from "path";
+import { merge } from "webpack-merge";
+import HtmlWebpackPlugin from "html-webpack-plugin";
+import CopyWebpackPlugin from "copy-webpack-plugin";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import { fileURLToPath } from "url"; // For ES Module compatibility
 
-module.exports = merge(common, {
+// Get the current directory from import.meta.url
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+import { common } from "./webpack.common.js";
+
+export default merge(common, {
   mode: "production",
-  output: {
-    filename: "[name].[contenthash].js",
-    path: path.resolve(__dirname, "dist"),
-    publicPath: "/",
-    clean: true,
-  },
-  module: {
-    rules: [
-      {
-        test: /\.js$/,
-        exclude: /(node_modules)/,
-        use: [
-          {
-            loader: "babel-loader",
-            options: {
-              presets: ["@babel/preset-env"],
-            },
-          },
-        ],
-      },
-    ],
-  },
-  stats: {
-    colors: true,
-    reasons: true,
-    children: true,
-  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, "src/index.html"),
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, "public/css"),
+          to: path.resolve(__dirname, "dist/css"),
+        },
+        {
+          from: path.resolve(__dirname, "public/images"),
+          to: path.resolve(__dirname, "dist/images"),
+        },
+      ],
+    }),
+    new MiniCssExtractPlugin({
+      filename: "[name].[contenthash].css",
+    }),
+  ],
 });

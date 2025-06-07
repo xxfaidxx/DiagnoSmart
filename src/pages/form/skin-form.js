@@ -153,16 +153,19 @@ export default function SkinForm() {
     }
 
     try {
-      const response = await fetch("http://localhost:3000/predict", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          symptoms: selectedSymptoms,
-          model_type: "skin",
-        }),
-      });
+      const response = await fetch(
+        "https://project-production-fa51.up.railway.app/predict",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            symptoms: selectedSymptoms,
+            model_type: "skin",
+          }),
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Failed to fetch prediction.");
