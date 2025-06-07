@@ -2,6 +2,9 @@ import HomePage from "../pages/home-page.js";
 import renderFeedbackPage from "../pages/feed-back/feedback-page.js";
 import ContactPage from "../pages/contact.js";
 import BoneForm from "../pages/form/bone-form.js";
+import GeneralDisease from "../pages/form/general-disease-form.js";
+import DigestiveForm from "../pages/form/digestive-form.js";
+import SkinForm from "../pages/form/skin-form.js";
 
 class Router {
   constructor() {
@@ -10,6 +13,9 @@ class Router {
       "/feedback": renderFeedbackPage,
       "/contact": () => ContactPage.render(),
       "/bone-form": () => BoneForm(),
+      "/general-form": () => GeneralDisease(),
+      "/digestive-form": () => DigestiveForm(),
+      "/skin-form": () => SkinForm(),
     };
     this.currentRoute = "/";
     this.setupRouting();
@@ -24,6 +30,9 @@ class Router {
   }
 
   setupRouting() {
+    const initialRoute = window.location.hash.slice(1) || "/";
+    this.loadPage(initialRoute);
+
     window.addEventListener("hashchange", () => {
       const route = window.location.hash.slice(1);
       if (this.routes[route]) {
@@ -32,8 +41,6 @@ class Router {
         this.loadPage("/");
       }
     });
-
-    this.loadPage(this.currentRoute);
   }
 }
 
