@@ -1,7 +1,10 @@
-const Hapi = require("@hapi/hapi");
-const axios = require("axios");
-const fs = require("fs");
-const supabase = require("./supa");
+import Hapi from "@hapi/hapi";
+import axios from "axios";
+import fs from "fs";
+import dotenv from "dotenv";
+import supabase from "./supa.js";
+
+dotenv.config();
 
 const server = Hapi.server({
   port: process.env.PORT || 3000,
@@ -44,7 +47,7 @@ server.route({
 
       return h.response(response.data).code(200);
     } catch (error) {
-      console.error(error);
+      console.error("Error during prediction:", error);
       return h.response({ error: "Something went wrong!" }).code(500);
     }
   },

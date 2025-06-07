@@ -1,4 +1,4 @@
-import { getFeedbacks, submitFeedback } from "/src/supa.js";
+import { getFeedbacks, submitFeedback } from "./supa-feedback.js";
 import createFeedbackForm from "./createfeedbackform.js";
 import createTestimonialCard from "./testi.js";
 

@@ -6,27 +6,4 @@ const supabaseKey =
 
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-export async function getFeedbacks() {
-  const { data, error } = await supabase
-    .from("feedback")
-    .select("*")
-    .order("created_at", { ascending: false });
-
-  if (error) {
-    console.error("❌ Gagal ambil feedback:", error);
-    return [];
-  }
-
-  return data;
-}
-
-export async function submitFeedback({ name, message, rating }) {
-  const { error } = await supabase
-    .from("feedback")
-    .insert([{ name, message, rating, created_at: new Date() }]);
-
-  if (error) {
-    console.error("❌ Gagal kirim feedback:", error);
-    alert("Gagal mengirim feedback.");
-  }
-}
+export default supabase;
