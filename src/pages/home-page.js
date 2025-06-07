@@ -21,12 +21,10 @@ export default class HomePage {
         >
       </div>
 
-
-    <h2 class="text-2xl font-medium text-center">Layanan Yang Tersedia</h2>
+      <h2 class="text-2xl font-medium text-center">Layanan Yang Tersedia</h2>
       <section class="py-12">
         <div class="container mx-auto mb-4 px-4">
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <!-- Category 1 -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
             <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow penyakit-tulang-card cursor-pointer">
               <div class="h-48 flex items-center justify-center">
                 <img src="./images/Tulang.png" alt="Penyakit Tulang" class="h-full w-full object-cover">

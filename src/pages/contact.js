@@ -7,14 +7,14 @@ const ContactPage = {
         <h1 class="text-3xl md:text-4xl font-bold text-gray-900 text-center">Hubungi Diagnosmart</h1>
         <p class="text-gray-600 text-center mb-10 mt-5">Kami siap membantu Anda dengan ramah dan professional</p>
 
-        <div class="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-        <div class="flex justify-center">
-          <img class="w-64 md:w-80 animate-float md:ml-10" src="./images/maskot-diagnosmart.png" alt="Maskot Diagnosmart">
-        </div>
-
+        <div class="max-w-6xl w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-10 items-center">
+          <div class="flex justify-center md:justify-start">
+            <img class="w-64 md:w-80 animate-float md:ml-10" src="./images/maskot-diagnosmart.png" alt="Maskot Diagnosmart">
+          </div>
 
           <div class="space-y-6">
-            <div class="group bg-white rounded-2xl shadow-md p-6 transition-all duration-300 cursor-pointer overflow-hidden w-fit">
+            <!-- Telepon -->
+            <div class="group bg-white rounded-2xl shadow-md p-6 transition-all duration-300 cursor-pointer overflow-hidden w-full sm:w-fit">
               <div class="inline-flex items-center gap-2 text-xl font-semibold text-gray-800">
                 📞 <span>Telepon</span>
               </div>
@@ -24,7 +24,7 @@ const ContactPage = {
               </div>
             </div>
 
-            <div class="group bg-white rounded-2xl shadow-md p-6 transition-all duration-300 cursor-pointer overflow-hidden w-fit">
+            <div class="group bg-white rounded-2xl shadow-md p-6 transition-all duration-300 cursor-pointer overflow-hidden w-full sm:w-fit">
               <div class="inline-flex items-center gap-2 text-xl font-semibold text-gray-800">
                 📧 <span>Email</span>
               </div>

@@ -20,11 +20,24 @@ class FooterBar extends HTMLElement {
       .footer {
         padding: 24px 20px;
         text-align: center;
-        color: #black;
+        color: #000;
         font-weight: bold;
         font-size: 20px;
       }
 
+      @media (max-width: 768px) {
+        .footer {
+          padding: 16px 10px;
+          font-size: 18px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .footer {
+          padding: 12px 8px;
+          font-size: 16px;
+        }
+      }
     `;
   }
 
