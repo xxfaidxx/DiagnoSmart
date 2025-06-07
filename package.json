@@ -7,13 +7,14 @@
     "start": "webpack serve --config webpack.dev.js",
     "dev": "nodemon index.js",
     "build-css": "tailwindcss -i ./src/input.css -o ./public/css/output.css --watch",
-    "build": "npm run build-css && webpack --config webpack.prod.js"
+    "build": "webpack --config webpack.prod.js"
   },
   "dependencies": {
     "@hapi/hapi": "^21.4.0",
     "@supabase/supabase-js": "^2.49.10",
     "axios": "^1.9.0",
     "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
     "express": "^4.21.2"
   },
   "devDependencies": {

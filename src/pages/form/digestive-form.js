@@ -141,7 +141,7 @@ export default function DigestiveForm() {
 
     if (selectedSymptoms.length === 0) {
       resultDiv.innerHTML =
-        "<p class='text-red-500'>Please select symptoms to predict.</p>";
+        "<p class='text-red-500'>Pilih gejala terlebih dahulu.</p>";
       return;
     }
 
@@ -182,6 +182,7 @@ export default function DigestiveForm() {
           }
       <div class="mt-4 p-3 bg-white border border-gray-200 rounded-md shadow-sm text-center">
         <p class="text-gray-800 mb-4">
+          Lebih baik mencegah daripada mengobati, segera periksa jika kondisi memburuk. <br>
           Kami harap informasi ini membantu Anda. Jika berkenan, silakan berikan penilaian atau masukan Anda!
         </p>
         <div class="flex justify-center">

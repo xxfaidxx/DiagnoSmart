@@ -1,12 +1,14 @@
 const Hapi = require("@hapi/hapi");
 const axios = require("axios");
+const fs = require("fs");
+const supabase = require("./supa");
 
 const server = Hapi.server({
-  port: 3000,
-  host: "localhost",
+  port: process.env.PORT || 3000,
+  host: "0.0.0.0",
   routes: {
     cors: {
-      origin: ["http://localhost:3250"],
+      origin: ["*"],
       credentials: true,
       headers: ["Content-Type", "Authorization"],
     },
@@ -20,12 +22,24 @@ server.route({
     try {
       const { symptoms, model_type } = request.payload;
 
+      const dataToSave = { symptoms, model_type, timestamp: new Date() };
+      fs.appendFile("data.json", JSON.stringify(dataToSave) + "\n", (err) => {
+        if (err) {
+          console.error("Error saving data:", err);
+        }
+      });
+
+      const { data, error } = await supabase
+        .from("predictions")
+        .insert([{ symptoms, model_type, timestamp: new Date() }]);
+
+      if (error) {
+        console.error("Error saving to Supabase:", error);
+      }
+
       const response = await axios.post(
         "https://project-production-fa51.up.railway.app/predict",
-        {
-          symptoms: symptoms,
-          model_type: model_type,
-        }
+        { symptoms, model_type }
       );
 
       return h.response(response.data).code(200);
