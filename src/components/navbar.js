@@ -12,6 +12,7 @@ class NavBar extends HTMLElement {
           align-items: center;
           padding: 1rem;
           background-color: #076ba1;
+          position: relative;
         }
 
         nav img {
@@ -24,7 +25,7 @@ class NavBar extends HTMLElement {
           display: flex;
           gap: 1.25rem;
           padding: 0;
-          list-style-type: none; 
+          list-style-type: none;
           margin-right: 1rem;
           font-size: 20px;
         }
@@ -39,6 +40,19 @@ class NavBar extends HTMLElement {
           color: #000000;
         }
 
+        .menu-toggle {
+          display: none;
+          flex-direction: column;
+          gap: 5px;
+          cursor: pointer;
+        }
+
+        .menu-toggle div {
+          width: 30px;
+          height: 4px;
+          background-color: white;
+          border-radius: 2px;
+        }
         @media (max-width: 768px) {
           nav {
             flex-direction: column;
@@ -51,6 +65,7 @@ class NavBar extends HTMLElement {
           }
 
           ul {
+            display: none;
             flex-direction: column;
             gap: 1rem;
             width: 100%;
@@ -59,6 +74,13 @@ class NavBar extends HTMLElement {
 
           ul li {
             width: 100%;
+          }
+          ul.show {
+            display: flex;
+          }
+
+          .menu-toggle {
+            display: flex;
           }
         }
 
@@ -76,13 +98,25 @@ class NavBar extends HTMLElement {
         <a href="#/">
           <img src="./images/icon.png" alt="DiagnoSmart Icon" />
         </a>
-        <ul>
+        <div class="menu-toggle" id="menu-toggle">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <ul id="menu">
           <li><a href="#/">Home</a></li>
           <li><a href="#/feedback">Feedback</a></li>
           <li><a href="#/contact">Contact</a></li>
         </ul>
       </nav>
     `;
+
+    const menuToggle = this.shadowRoot.querySelector("#menu-toggle");
+    const menu = this.shadowRoot.querySelector("#menu");
+
+    menuToggle.addEventListener("click", () => {
+      menu.classList.toggle("show");
+    });
   }
 }
 

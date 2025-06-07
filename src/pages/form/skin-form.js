@@ -12,7 +12,7 @@ export default function SkinForm() {
           <input id="symptom-input" class="p-2 border rounded-md w-full" type="text" placeholder="Masukkan Gejala" autocomplete="off" />
         </div>
 
-        <button type="submit" class="text-white py-2 px-4 rounded-md" style="background-color: #076ba1;">Prediksi</button>
+        <button type="submit" class="text-white py-2 px-4 rounded-md w-full sm:w-auto" style="background-color: #076ba1;">Prediksi</button>
       </form>
 
       <div id="result" class="mt-4"></div>
@@ -91,7 +91,7 @@ export default function SkinForm() {
   function updateSelectedSymptoms() {
     selectedSymptomsDiv.innerHTML = selectedSymptoms
       .map(
-        (symptom) => `
+        (symptom) => ` 
     <span class="p-1 text-white rounded-md inline-flex items-center" style="background-color: #076ba1;">
       ${symptom}
       <span class="ml-2 cursor-pointer text-white font-bold" data-symptom="${symptom}">×</span>
