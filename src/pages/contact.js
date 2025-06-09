@@ -5,7 +5,6 @@ const ContactPage = {
     div.innerHTML = `
       <section class="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 flex flex-col items-center justify-center px-4 py-10 text-gray-800 relative overflow-hidden">
         
-        <!-- Background Decorative Elements -->
         <div class="absolute inset-0 overflow-hidden pointer-events-none">
           <div class="absolute top-20 left-10 w-32 h-32 bg-blue-200 rounded-full opacity-20 animate-pulse"></div>
           <div class="absolute top-40 right-20 w-24 h-24 bg-purple-200 rounded-full opacity-30 animate-bounce" style="animation-delay: 1s;"></div>
@@ -13,7 +12,6 @@ const ContactPage = {
           <div class="absolute bottom-20 right-32 w-20 h-20 bg-pink-200 rounded-full opacity-20 animate-bounce" style="animation-delay: 0.5s;"></div>
         </div>
 
-        <!-- Header Section with Enhanced Styling -->
         <div class="text-center mb-12 relative z-10">
           <h1 class="text-4xl md:text-6xl font-bold pb-4 bg-gradient-to-r from-blue-600 via-purple-600 to-teal-600 bg-clip-text text-transparent mb-4 animate-fadeInUp">
             Hubungi DiagnoSmart
@@ -26,7 +24,6 @@ const ContactPage = {
         </div>
 
         <div class="flex flex-col lg:flex-row gap-12 items-start justify-center w-full max-w-7xl relative z-10">
-          
           <div class="flex justify-center w-full lg:w-1/2 relative">
             <div class="relative group">
               <div class="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full blur-xl opacity-30 group-hover:opacity-50 transition-opacity duration-500 animate-pulse"></div>
