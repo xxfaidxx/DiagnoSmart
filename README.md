@@ -1,4 +1,6 @@
-# 🧠 DiagnoSmart
+<p align="center">
+  <img src="public/images/icon.png" alt="DiagnoSmart Icon" width="250"/>
+</p>
 
 > **"Masa depan kesehatan ada di ujung jari Anda."**
 
