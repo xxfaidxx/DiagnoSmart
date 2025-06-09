@@ -53,6 +53,7 @@ class NavBar extends HTMLElement {
           background-color: white;
           border-radius: 2px;
         }
+
         @media (max-width: 768px) {
           nav {
             flex-direction: column;
@@ -70,17 +71,20 @@ class NavBar extends HTMLElement {
             gap: 1rem;
             width: 100%;
             text-align: left;
+            padding-left: 1rem;
           }
 
           ul li {
             width: 100%;
           }
+
           ul.show {
             display: flex;
           }
 
           .menu-toggle {
             display: flex;
+            margin-right: 1rem;
           }
         }
 

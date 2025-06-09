@@ -9,7 +9,7 @@ export default function SkinForm() {
         <div id="selected-symptoms" class="mb-2 flex flex-wrap gap-2"></div>
 
         <div class="relative mb-4">
-          <input id="symptom-input" class="p-2 border rounded-md w-full" type="text" placeholder="Masukkan Gejala" autocomplete="off" />
+          <input id="symptom-input" class="p-2 border rounded-md w-full" type="text" placeholder="Masukkan Setidaknya 2 Gejala" autocomplete="off" />
         </div>
 
         <button type="submit" class="text-white py-2 px-4 rounded-md w-full sm:w-auto" style="background-color: #076ba1;">Prediksi</button>
@@ -130,17 +130,18 @@ export default function SkinForm() {
   symptomInput.addEventListener("input", handleAutocomplete);
 
   document.addEventListener("click", function (event) {
-    setTimeout(() => {
-      const dropdown = document.querySelector("#autocomplete-dropdown");
+    const dropdown = document.querySelector("#autocomplete-dropdown");
+    if (
+      dropdown &&
+      !symptomInput.contains(event.target) &&
+      !dropdown.contains(event.target)
+    ) {
+      dropdown.remove();
+    }
+  });
 
-      if (
-        dropdown &&
-        !symptomInput.contains(event.target) &&
-        !dropdown.contains(event.target)
-      ) {
-        dropdown.remove();
-      }
-    }, 10000);
+  symptomInput.addEventListener("click", function (event) {
+    event.stopPropagation();
   });
 
   form.addEventListener("submit", async (event) => {
