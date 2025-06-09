@@ -16,7 +16,7 @@ const ContactPage = {
         <!-- Header Section with Enhanced Styling -->
         <div class="text-center mb-12 relative z-10">
           <h1 class="text-4xl md:text-6xl font-bold pb-4 bg-gradient-to-r from-blue-600 via-purple-600 to-teal-600 bg-clip-text text-transparent mb-4 animate-fadeInUp">
-            Hubungi Diagnosmart
+            Hubungi DiagnoSmart
           </h1>
           <div class="flex items-center justify-center mt-5 gap-2 text-lg md:text-xl text-gray-600 animate-fadeInUp" style="animation-delay: 0.2s;">
             <span>✨</span>

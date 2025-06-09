@@ -1,9 +1,11 @@
+import supabase from "../../supa";
+
 export default function SkinForm() {
   const content = document.createElement("div");
   content.innerHTML = `
     <section class="w-full md:w-3/4 mx-auto bg-white p-6 rounded-lg shadow-md mt-4">
       <h2 class="text-2xl font-bold mb-4">Prediksi Penyakit Kulit</h2>
-      <p class="text-gray-700 mb-4">Pilih gejala untuk mendapat prediksi penyakit kulit</p>
+      <p class="text-gray-700 mb-3">Pilih gejala untuk mendapat prediksi penyakit kulit</p>
 
       <form id="skin-form" class="relative">
         <div id="selected-symptoms" class="mb-2 flex flex-wrap gap-2"></div>
@@ -147,15 +149,15 @@ export default function SkinForm() {
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    if (selectedSymptoms.length === 0) {
+    if (selectedSymptoms.length < 2) {
       resultDiv.innerHTML =
-        "<p class='text-red-500'>Pilih gejala terlebih dahulu.</p>";
+        "<p class='text-red-500'>Pilih setidaknya dua gejala.</p>";
       return;
     }
 
     try {
       const response = await fetch(
-        "https://project-production-fa51.up.railway.app/predict",
+        "https://capstone-project-production-0852.up.railway.app/predict",
         {
           method: "POST",
           headers: {
@@ -173,39 +175,50 @@ export default function SkinForm() {
       }
 
       const data = await response.json();
+
+      const { data: insertedData, error } = await supabase
+        .from("predictions")
+        .insert([
+          {
+            symptoms: selectedSymptoms,
+            model_type: "skin",
+            prediction: data.prediction,
+          },
+        ]);
+
+      if (error) {
+        throw new Error(error.message);
+      }
+
       resultDiv.innerHTML = `
-        <div class="p-4 border rounded-md bg-green-50">
-          <h3 class="text-lg font-semibold text-green-700 mb-2">Prediksi Penyakit: ${
-            data.prediction
-          }</h3>
-          <p class="text-gray-800 mb-4">${
-            data.description || "No description available."
-          }</p>
-          ${
-            data.precautions && data.precautions.length
-              ? `<h4 class="font-medium text-green-700 mb-1">Pencegahan:</h4>
-                 <ul class="list-disc list-inside text-gray-700">
-                   ${data.precautions
-                     .map((item) => `<li>${item}</li>`)
-                     .join("")}
-                 </ul>`
-              : ""
-          }
-          <div class="mt-4 p-3 bg-white border border-gray-200 rounded-md shadow-sm text-center">
-            <p class="text-gray-800 mb-4">
-              Lebih baik mencegah daripada mengobati, segera periksa jika kondisi memburuk. <br>
-              Kami harap informasi ini membantu Anda. Jika berkenan, silakan berikan penilaian atau masukan Anda!
-            </p>
-            <div class="flex justify-center">
-              <a href="#/feedback"
-                class="text-white px-4 py-2 rounded-md transition hover:opacity-90"
-                style="background-color: #076ba1;">
-                Berikan Rating & Masukan
-              </a>
-            </div>
+      <div class="p-4 border rounded-md bg-green-50">
+        <h3 class="text-lg font-semibold text-green-700 mb-2">Prediksi Penyakit: ${
+          data.prediction
+        }</h3>
+        <p class="text-gray-800 mb-4">${
+          data.description || "No description available."
+        }</p>
+        ${
+          data.precautions && data.precautions.length
+            ? `<h4 class="font-medium text-green-700 mb-1">Pencegahan:</h4>
+               <ul class="list-disc list-inside text-gray-700">
+                 ${data.precautions.map((item) => `<li>${item}</li>`).join("")}
+               </ul>`
+            : ""
+        }
+        <div class="mt-4 p-3 bg-white border border-gray-200 rounded-md shadow-sm text-center">
+          <p class="text-gray-800 mb-4">
+            Lebih baik mencegah daripada mengobati, segera periksa jika kondisi memburuk. <br>
+            Kami harap informasi ini membantu Anda. Jika berkenan, silakan berikan penilaian atau masukan Anda yang akan membantu kami meningkatkan kualitas layanan kami.
+          </p>
+          <div class="flex justify-center">
+            <a href="#/feedback" class="text-white px-4 py-2 rounded-md transition hover:opacity-90" style="background-color: #076ba1;">
+              Berikan Rating & Masukan
+            </a>
           </div>
         </div>
-      `;
+      </div>
+    `;
     } catch (error) {
       resultDiv.innerHTML = `<p class="text-red-500">${error.message}</p>`;
     }

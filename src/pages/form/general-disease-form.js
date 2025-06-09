@@ -1,11 +1,13 @@
+import supabase from "../../supa";
+
 export default function GeneralDisease() {
   const content = document.createElement("div");
   content.innerHTML = `
     <section class="w-full md:w-3/4 mx-auto bg-white p-6 rounded-lg shadow-md mt-4">
       <h2 class="text-2xl font-bold mb-4">Prediksi Penyakit Umum</h2>
-      <p class="text-gray-700 mb-4">Pilih gejala untuk mendapat prediksi penyakit.</p>
+      <p class="text-gray-700 mb-3">Pilih gejala untuk mendapat prediksi penyakit umum</p>
 
-      <form id="common-form" class="relative">
+      <form id="general-form" class="relative">
         <div id="selected-symptoms" class="mb-2 flex flex-wrap gap-2"></div>
 
         <div class="relative mb-4">
@@ -19,7 +21,7 @@ export default function GeneralDisease() {
     </section>
   `;
 
-  const form = content.querySelector("#common-form");
+  const form = content.querySelector("#general-form");
   const resultDiv = content.querySelector("#result");
   const symptomInput = content.querySelector("#symptom-input");
   const selectedSymptomsDiv = content.querySelector("#selected-symptoms");
@@ -50,7 +52,7 @@ export default function GeneralDisease() {
     "Riwayat penyakit keluarga": "family_history",
     "Detak jantung cepat": "fast_heart_rate",
     "Rasa lelah": "fatigue",
-    "Bau urin yang tidak sedap": "foul_smell_of_urine",
+    "Bau urin yang tidak sedap": "foul_smell_of urine",
     "Sakit kepala": "headache",
     "Demam tinggi": "high_fever",
     "Gangguan pencernaan": "indigestion",
@@ -188,15 +190,15 @@ export default function GeneralDisease() {
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    if (selectedSymptoms.length === 0) {
+    if (selectedSymptoms.length < 2) {
       resultDiv.innerHTML =
-        "<p class='text-red-500'>Pilih gejala terlebih dahulu.</p>";
+        "<p class='text-red-500'>Pilih setidaknya dua gejala.</p>";
       return;
     }
 
     try {
       const response = await fetch(
-        "https://project-production-fa51.up.railway.app/predict",
+        "https://capstone-project-production-0852.up.railway.app/predict",
         {
           method: "POST",
           headers: {
@@ -214,40 +216,50 @@ export default function GeneralDisease() {
       }
 
       const data = await response.json();
-      resultDiv.innerHTML = `
-        <div class="p-4 border rounded-md bg-green-50">
-          <h3 class="text-lg font-semibold text-green-700 mb-2">Prediksi Penyakit: ${
-            data.prediction
-          }</h3>
-          <p class="text-gray-800 mb-4">${
-            data.description || "No description available."
-          }</p>
-          ${
-            data.precautions && data.precautions.length
-              ? `<h4 class="font-medium text-green-700 mb-1">Pencegahan:</h4>
-                 <ul class="list-disc list-inside text-gray-700">
-                   ${data.precautions
-                     .map((item) => `<li>${item}</li>`)
-                     .join("")}
-                 </ul>`
-              : ""
-          }
 
+      const { data: insertedData, error } = await supabase
+        .from("predictions")
+        .insert([
+          {
+            symptoms: selectedSymptoms,
+            model_type: "general",
+            prediction: data.prediction,
+          },
+        ]);
+
+      if (error) {
+        throw new Error(error.message);
+      }
+
+      resultDiv.innerHTML = `
+      <div class="p-4 border rounded-md bg-green-50">
+        <h3 class="text-lg font-semibold text-green-700 mb-2">Prediksi Penyakit: ${
+          data.prediction
+        }</h3>
+        <p class="text-gray-800 mb-4">${
+          data.description || "No description available."
+        }</p>
+        ${
+          data.precautions && data.precautions.length
+            ? `<h4 class="font-medium text-green-700 mb-1">Pencegahan:</h4>
+               <ul class="list-disc list-inside text-gray-700">
+                 ${data.precautions.map((item) => `<li>${item}</li>`).join("")}
+               </ul>`
+            : ""
+        }
         <div class="mt-4 p-3 bg-white border border-gray-200 rounded-md shadow-sm text-center">
           <p class="text-gray-800 mb-4">
             Lebih baik mencegah daripada mengobati, segera periksa jika kondisi memburuk. <br>
-            Kami harap informasi ini membantu Anda. Jika berkenan, silakan berikan penilaian atau masukan Anda!
+            Kami harap informasi ini membantu Anda. Jika berkenan, silakan berikan penilaian atau masukan Anda yang akan membantu kami meningkatkan kualitas layanan kami.
           </p>
           <div class="flex justify-center">
-            <a href="#/feedback"
-              class="text-white px-4 py-2 rounded-md transition hover:opacity-90"
-              style="background-color: #076ba1;">
+            <a href="#/feedback" class="text-white px-4 py-2 rounded-md transition hover:opacity-90" style="background-color: #076ba1;">
               Berikan Rating & Masukan
             </a>
           </div>
         </div>
-        </div>
-      `;
+      </div>
+    `;
     } catch (error) {
       resultDiv.innerHTML = `<p class="text-red-500">${error.message}</p>`;
     }
