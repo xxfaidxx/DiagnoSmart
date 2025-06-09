@@ -15,12 +15,25 @@ export default async function renderFeedbackPage() {
   feedbackList.className =
     "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-10 w-full max-w-6xl";
 
+  let currentPage = 1;
+  const itemsPerPage = 9;
+  let totalFeedbacks = 0;
+
   async function loadFeedbacks() {
     const data = await getFeedbacks();
+    totalFeedbacks = data.length;
+    const paginatedData = data.slice(
+      (currentPage - 1) * itemsPerPage,
+      currentPage * itemsPerPage
+    );
+
     feedbackList.innerHTML = "";
-    data.forEach((item) => {
+    paginatedData.forEach((item) => {
       feedbackList.appendChild(createTestimonialCard(item));
     });
+
+    prevButton.disabled = currentPage === 1;
+    nextButton.disabled = currentPage * itemsPerPage >= totalFeedbacks;
   }
 
   const form = createFeedbackForm(async (data) => {
@@ -37,6 +50,40 @@ export default async function renderFeedbackPage() {
 
   wrapper.appendChild(subtitle);
   wrapper.appendChild(feedbackList);
+
+  const pagination = document.createElement("div");
+  pagination.className = "flex gap-4 mt-6";
+
+  const prevButton = document.createElement("button");
+  prevButton.textContent = "Prev";
+  prevButton.disabled = true;
+  prevButton.className = "px-4 py-2 text-white rounded cursor-pointer";
+  prevButton.style.backgroundColor = "#076ba1";
+
+  const nextButton = document.createElement("button");
+  nextButton.textContent = "Next";
+  nextButton.disabled = true;
+  nextButton.className = "px-4 py-2 text-white rounded cursor-pointer";
+  nextButton.style.backgroundColor = "#076ba1";
+
+  prevButton.addEventListener("click", () => {
+    if (currentPage > 1) {
+      currentPage--;
+      loadFeedbacks();
+    }
+  });
+
+  nextButton.addEventListener("click", () => {
+    if (currentPage * itemsPerPage < totalFeedbacks) {
+      currentPage++;
+      loadFeedbacks();
+    }
+  });
+
+  pagination.appendChild(prevButton);
+  pagination.appendChild(nextButton);
+
+  wrapper.appendChild(pagination);
 
   loadFeedbacks();
 

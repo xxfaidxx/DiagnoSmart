@@ -33,7 +33,8 @@ export default function createFeedbackForm(onSubmit) {
   const submitBtn = document.createElement("button");
   submitBtn.type = "submit";
   submitBtn.textContent = "Submit";
-  submitBtn.className = "bg-blue-500 text-white px-4 py-2 rounded";
+  submitBtn.className = "text-white px-4 py-2 rounded";
+  submitBtn.style.backgroundColor = "#076ba1";
 
   form.append(nameInput, messageInput, stars, submitBtn);
 
