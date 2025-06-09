@@ -1,16 +1,12 @@
-// webpack.prod.js
-import path from "path";
-import { merge } from "webpack-merge";
-import HtmlWebpackPlugin from "html-webpack-plugin";
-import CopyWebpackPlugin from "copy-webpack-plugin";
-import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import { fileURLToPath } from "url"; // For ES Module compatibility
+const path = require("path");
+const { merge } = require("webpack-merge");
+const common = require("./webpack.common.js");
 
-// Get the current directory from import.meta.url
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-import { common } from "./webpack.common.js";
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-export default merge(common, {
+module.exports = merge(common, {
   mode: "production",
   plugins: [
     new HtmlWebpackPlugin({
