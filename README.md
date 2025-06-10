@@ -2,32 +2,32 @@
   <img src="public/images/icon.png" alt="DiagnoSmart Icon" width="250"/>
 </p>
 
-> **"Masa depan kesehatan ada di ujung jari Anda."**
+> **"Deteksi dini, Hidup lebih pasti di DiagnoSmart"**
 
 **DiagnoSmart** adalah platform diagnosis cerdas berbasis web yang memanfaatkan teknologi modern untuk membantu pengguna mengenali potensi penyakit sejak dini. Dengan tampilan elegan, responsif, dan fungsionalitas berbasis AI ringan, DiagnoSmart dirancang untuk menjadi asisten kesehatan pribadi Anda – cepat, mudah, dan aman.
 
 ---
 
-## 🌟 Fitur Unggulan
+## Fitur Unggulan
 
-🔍 **Diagnosis Gejala Otomatis**  
+ **Diagnosis Gejala Otomatis**  
 Masukkan gejala, dapatkan analisis — semudah itu.
 
-📈 **Visualisasi Hasil Interaktif**  
+ **Visualisasi Hasil Interaktif**  
 Informasi kesehatan ditampilkan secara jelas dan ringkas.
 
-🛡️ **Keamanan Data & Autentikasi Supabase**  
+ **Keamanan Data & Autentikasi Supabase**  
 Privasi pengguna terjaga dengan protokol modern.
 
-🧩 **Arsitektur Modular**  
+ **Arsitektur Modular**  
 Kembangkan dengan mudah berkat struktur komponen yang rapi.
 
-🌐 **Tampilan Responsif & Modern**  
+ **Tampilan Responsif & Modern**  
 Dibangun dengan TailwindCSS untuk pengalaman yang konsisten di semua perangkat.
 
 ---
 
-## 🧰 Teknologi yang Digunakan
+##  Teknologi yang Digunakan
 
 | Kategori     | Teknologi                                 |
 |--------------|--------------------------------------------|
@@ -39,7 +39,7 @@ Dibangun dengan TailwindCSS untuk pengalaman yang konsisten di semua perangkat.
 
 ---
 
-## 📦 Struktur Proyek
+##  Struktur Proyek
 
 ```
 DiagnoSmart/
@@ -60,7 +60,7 @@ DiagnoSmart/
 
 ---
 
-## 🚀 Cara Menjalankan
+##  Cara Menjalankan
 
 ### 1. Clone dan Install
 
@@ -86,24 +86,24 @@ npm run build
 
 ---
 
-## 💡 Kontribusi
+## Kontribusi
 
 Kami sangat terbuka untuk kontribusi dari komunitas. Baik itu perbaikan bug, fitur baru, atau peningkatan performa – semua kontribusi sangat berarti!
 
-📬 laporkan bug/saran di [Issue Tracker](https://github.com/xxfaidxx/DiagnoSmart/issues)
+ laporkan bug/saran di [Issue Tracker](https://github.com/xxfaidxx/DiagnoSmart/issues)
 
 ---
 
-## 📄 Lisensi
+##  Lisensi
 
 Proyek ini dilisensikan di bawah lisensi **ISC** – Silakan gunakan dan modifikasi sesuai kebutuhan.
 
 ---
 
-## 👨‍💻 Pengembang
+##  Pengembang
 
 **Tim DiagnoSmart**
-🔗 GitHub: [@xxfaidxx](https://github.com/xxfaidxx)
+ GitHub: [@xxfaidxx](https://github.com/xxfaidxx)
 
 ---
 
