@@ -107,7 +107,7 @@ Proyek ini dilisensikan di bawah lisensi **ISC** – Silakan gunakan dan modifik
 
 ---
 
-## 🌈 Penutup
+##  Penutup
 
 **DiagnoSmart** bukan sekadar aplikasi – ini adalah langkah awal menuju masyarakat yang lebih peduli dan sadar kesehatan.  
 Mari bersama membangun masa depan kesehatan digital yang lebih cerdas dan inklusif.
