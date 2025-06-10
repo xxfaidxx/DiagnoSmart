@@ -105,7 +105,7 @@ Proyek ini dilisensikan di bawah lisensi **ISC** – Silakan gunakan dan modifik
 ##  Pengembang
 
 **Tim DiagnoSmart**
- GitHub: [@xxfaidxx](https://github.com/xxfaidxx)
+ GitHub: [@xxfaidxx](https://github.com/xxfaidxx) [@aryo04](https://github.com/aryo04) [@khalidalbani21](https://github.com/khalidalbani21) [@isminilam](https://github.com/isminilam) [@Lahen194](https://github.com/Lahen194) [@listiana-code](https://github.com/listiana-code)
 
 ---
 
