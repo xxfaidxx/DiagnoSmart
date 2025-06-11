@@ -10,8 +10,8 @@
 
 ## Fitur Unggulan
 
- **Diagnosis Gejala Otomatis**  
-Masukkan gejala, dapatkan analisis — semudah itu.
+ **Diagnosis Penyakit Otomatis**  
+Masukkan gejala dan mendapatkan hasil prediksi penyakit.
 
  **Visualisasi Hasil Interaktif**  
 Informasi kesehatan ditampilkan secara jelas dan ringkas.
