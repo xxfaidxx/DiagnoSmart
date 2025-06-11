@@ -29,15 +29,15 @@ Dibangun dengan TailwindCSS untuk pengalaman yang konsisten di semua perangkat.
 
 ##  Teknologi yang Digunakan
 
-| Kategori         | Teknologi                                  |
-|------------------|--------------------------------------------|
-| Frontend         | HTML5, TailwindCSS, JavaScript (Modular)   |
-| Backend          | Express.js, Hapi.js                        |
-| Machine Learning | TensorFlow, Keras, Python                  |
-| Auth & DB        | Supabase                                   |
-| Build Tools      | Webpack, Babel, PostCSS, Nodemon           |
-| Web Hosting      | Firebase (konfigurasi disiapkan)           |
-| ML Hosting       | Railway                                    |
+| Kategori         | Teknologi                                 |
+| ---------------- | ----------------------------------------- |
+| Frontend         | HTML5, TailwindCSS, JavaScript (Modular)  |
+| Backend          | Express.js, Hapi.js, FastAPI              |
+| Machine Learning | TensorFlow, Keras, Python, NumPy, Pandas  |
+| Auth & DB        | Supabase                                  |
+| Build Tools      | Webpack, Babel, PostCSS, Nodemon, Docker  |
+| Web Hosting      | Firebase (konfigurasi disiapkan)          |
+| ML Hosting       | Railway                                   |
 
 ---
 
