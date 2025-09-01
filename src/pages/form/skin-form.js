@@ -157,7 +157,7 @@ export default function SkinForm() {
 
     try {
       const response = await fetch(
-        "https://diagno-production-165b.up.railway.app/predict",
+        "https://diagnosmartml-production.up.railway.app/predict",
         {
           method: "POST",
           headers: {
